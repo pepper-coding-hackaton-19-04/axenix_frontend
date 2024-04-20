@@ -1,3 +1,4 @@
+export { Spinner } from './Spinner/Spinner'
 export { ButtonUI } from './Button/ButtonUI'
 export { CardUI } from './Card/CardUI'
 export { ContainerUI } from './Container/ContainerUI'

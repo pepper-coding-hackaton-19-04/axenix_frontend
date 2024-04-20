@@ -4,16 +4,33 @@ import { FC, HTMLAttributes } from 'react'
 interface CardUIProps extends Omit<HTMLAttributes<HTMLDivElement>, 'className'> {
     tag?: 'div' | 'section' | 'article'
     className?: string
-    bgColor?: 'primary' | 'secondary' | 'neutral' | 'light'
+    bgColor?: 'primary' | 'secondary' | 'neutral' | 'light' |'xneutral'
+    variant?: 'ghost' | 'default'
 }
 
-const bgStyle: Record<'primary' | 'secondary' | 'neutral' | 'light', string> = {
+const bgStyle: Record<'primary' | 'secondary' | 'neutral' | 'light' | 'xneutral', string> = {
     primary: 'bg-x-orange',
     secondary: 'bg-x-purple',
-    neutral: 'bg-x-white',
-    light: 'bg-x-light-orange',
+    neutral: 'bg-gray-50',
+    light: 'bg-x-white',
+    xneutral: 'bg-gray-50'
 }
 
-export const CardUI: FC<CardUIProps> = ({ tag: Wrapper = 'div', children, className, bgColor = 'primary' }) => {
-    return <Wrapper className={cn(`p-4 rounded-xl ${bgStyle[bgColor]}`, {}, [className])}>{children}</Wrapper>
+const variantStyles: Record<'default' | 'ghost', string> = {
+    default: 'border-none',
+    ghost: 'border-solid border-2 border-x-black',
+}
+
+export const CardUI: FC<CardUIProps> = ({
+    tag: Wrapper = 'div',
+    children,
+    className,
+    bgColor = 'primary',
+    variant = 'default',
+}) => {
+    return (
+        <Wrapper className={cn(`p-4 rounded-xl ${bgStyle[bgColor]} ${variantStyles[variant]}`, {}, [className])}>
+            {children}
+        </Wrapper>
+    )
 }

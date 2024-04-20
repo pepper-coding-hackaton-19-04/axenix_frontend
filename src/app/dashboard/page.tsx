@@ -79,10 +79,68 @@ const Dashboard = () => {
         <Page className="w-11/12">
             <VStack alignItems="center">
                 <HStack justifyContent="between">
-                    <CardUI>
+                    <CardUI bgColor="light">
                         <div className="grid grid-cols-3 gap-8">
                             <div className="grid grid-rows-2 gap-3">
                                 <CardUI className="w-full p-8 h-full" bgColor="neutral">
+                                    <VStack justifyContent="between">
+                                        <SpanUI type="large" color="#333">
+                                            Настройка
+                                        </SpanUI>
+                                        <SpanUI type="large" color="#333">
+                                            фильтрации
+                                        </SpanUI>
+                                            <VStack justifyContent='between'>
+
+                                                    <SpanUI type="medium" color="#333">
+                                                    Товар
+                                                    </SpanUI>
+                                                    <InputUI width={'265px'} height={'30px'} backgroundColor={'#ffd8ae'} textStyle={'bold'} type={'active'} text={''} ></InputUI>
+
+                                            </VStack>
+                                            <VStack justifyContent='between'>
+
+                                            <SpanUI type="medium" color="#333">
+                                            Количество
+                                            </SpanUI>
+                                            <InputUI width={'265px'} height={'30px'} backgroundColor={'#ffd8ae'} textStyle={'bold'} type={'active'} text={''} ></InputUI>
+
+                                            </VStack>
+                                        <ButtonUI textStyle='medium'>Применить</ButtonUI>
+
+
+                                    </VStack>
+                                </CardUI>
+                                <CardUI className="w-full p-8 h-full" bgColor="light">
+                                    <VStack justifyContent="between">
+                                        <SpanUI type="large" color="#333">
+                                            Редактирование
+                                        </SpanUI>
+                                        <SpanUI type="large" color="#333">
+                                            товаров
+                                        </SpanUI>
+                                            <VStack justifyContent='between'>
+
+                                                    <SpanUI type="medium" color="#333">
+                                                    Товар
+                                                    </SpanUI>
+                                                    <InputUI width={'265px'} height={'30px'} backgroundColor={'#ffd8ae'} textStyle={'bold'} type={'active'} text={''} ></InputUI>
+
+                                            </VStack>
+                                            <VStack justifyContent='between'>
+
+                                            <SpanUI type="medium" color="#333">
+                                            Количество
+                                            </SpanUI>
+                                            <InputUI width={'265px'} height={'30px'} backgroundColor={'#ffd8ae'} textStyle={'bold'} type={'active'} text={''} ></InputUI>
+
+                                            </VStack>
+                                        <ButtonUI textStyle='medium'>Применить</ButtonUI>
+
+
+                                    </VStack>
+                                </CardUI>
+                                {/* <CardUI className="w-full p-8 h-full" bgColor="neutral">
                                     <VStack alignItems="start">
                                         <SpanUI type="medium" color="#333">
                                             Navigation
@@ -100,42 +158,23 @@ const Dashboard = () => {
                                             -Route4
                                         </SpanUI>
                                     </VStack>
-                                </CardUI>
-                                <CardUI className="w-full p-8 h-full" bgColor="neutral">
-                                    <VStack alignItems="start">
-                                        <SpanUI type="medium" color="#333">
-                                            Navigation
-                                        </SpanUI>
-                                        <SpanUI type="medium" color="#333">
-                                            -Route1
-                                        </SpanUI>
-                                        <SpanUI type="medium" color="#333">
-                                            -Route2
-                                        </SpanUI>
-                                        <SpanUI type="medium" color="#333">
-                                            -Route3
-                                        </SpanUI>
-                                        <SpanUI type="medium" color="#333">
-                                            -Route4
-                                        </SpanUI>
-                                    </VStack>
-                                </CardUI>
+                                </CardUI> */}
                             </div>
 
                             <div className="grid grid-rows-2 gap-3">
-                                <CardUI bgColor="neutral">
+                                <CardUI bgColor="light">
                                     <VStack alignItems="center">
                                         <canvas ref={pieChartRef} width="auto" height="auto"></canvas>
                                     </VStack>
                                 </CardUI>
-                                <CardUI bgColor="neutral">
+                                <CardUI bgColor="light">
                                     <VStack alignItems="center">
                                         <canvas ref={barChartRef} width="auto" height="auto"></canvas>
                                     </VStack>
                                 </CardUI>
                             </div>
 
-                            <CardUI bgColor="light" className="h-full">
+                            {/* <CardUI bgColor="light" className="h-full">
                                 <VStack gap={5}>
                                     <HStack justifyContent="center">
                                         <SpanUI type="medium" className="text-x-white">
@@ -176,7 +215,7 @@ const Dashboard = () => {
                                         </ButtonUI>
                                     </VStack>
                                 </VStack>
-                            </CardUI>
+                            </CardUI> */}
                         </div>
                     </CardUI>
                 </HStack>

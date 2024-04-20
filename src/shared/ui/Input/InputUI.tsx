@@ -7,7 +7,6 @@ interface InputProps {
     textStyle: 'regular' | 'medium' | 'semibold' | 'bold' | 'extaBold'
     type: 'default' | 'active' | 'disable'
     text: string
-
 }
 
 export const InputUI: React.FC<InputProps> = ({ width, height, backgroundColor, textStyle, type, text }) => {
@@ -50,8 +49,8 @@ export const InputUI: React.FC<InputProps> = ({ width, height, backgroundColor, 
         ...mergedTextStyle,
         ...typeInput[type],
         padding: '10px',
-        marginTop: '5px',
-        marginBottom: '5px',
+        marginTop: '10px',
+        marginBottom: '10px',
         outline: 'none',
         borderRadius: '6px',
     }

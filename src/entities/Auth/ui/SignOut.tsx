@@ -8,8 +8,10 @@ export function SignOut() {
                 'use server'
                 await signOut()
             }}
+            className='flex p-1 hover:bg-[rgb(0,0,0,.1)] transition-all rounded-md'
         >
-            <ButtonUI className="flex items-center p-2 space-x-3 rounded-md" type="submit" textStyle="medium">
+            {/*<ButtonUI className="flex items-center p-2 space-x-3 rounded-md" type="submit" textStyle="medium">*/}
+            <button className='flex items-center gap-1'>
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="w-6 h-6 text-gray-100"
@@ -25,7 +27,8 @@ export function SignOut() {
                     />
                 </svg>
                 <SpanUI className="text-x-white">Выйти</SpanUI>
-            </ButtonUI>
+            </button>
+            {/*</ButtonUI>*/}
         </form>
     )
 }

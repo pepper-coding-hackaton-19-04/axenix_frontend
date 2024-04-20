@@ -90,8 +90,8 @@ export async function Sidebar() {
     // const [open, setOpen] = useState(false)
     const sessionData = await auth()
     return (
-        <div className="flex-row height-100%">
-            <div className={`lg:w-40 flex flex-col lg:h-screen p-3 w-full bg-x-orange shadow duration-300`}>
+        <div className="h-full w-full">
+            <div className={` flex flex-col h-full p-3 min-h-screen bg-x-orange shadow duration-300`}>
                 <div className="space-y-3">
                     <div className="flex items-center justify-center pt-4 pb-4">
                         <Logo />

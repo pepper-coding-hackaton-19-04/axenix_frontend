@@ -1,15 +1,15 @@
 import Image from 'next/image'
 import React, { CSSProperties } from 'react'
-import * as loginImg from '../../../public/assets/signin.jpg'
+import * as refisetImg from '../../../public/assets/signup.png'
 import * as Logo from '../../../public/assets/ae2287a983927b38618a2c560d9d7c36.png'
 import { ButtonUI, HStack, InputUI, SpanUI, VStack } from '@/shared/ui'
 import { USER_ACCESS_TOKEN, USER_REFRESH_TOKEN } from '@/shared/consts/localStorage'
 
 export default function SignIn() {
     const imageStyles: CSSProperties = {
-        width: 1767,
-        height: 888,
-        borderRadius: 36,
+        width: '100vw',
+        height: '100vh',
+        borderRadius: 0,
         position: 'absolute',
         zIndex: '-100',
     }
@@ -45,10 +45,10 @@ export default function SignIn() {
         marginBottom: 10,
     }
 
-    async function login(form: FormData) {
+    async function register(form: FormData) {
         'use server'
 
-        const data = await fetch(process.env.API + '/api/auth/login', { body: form })
+        const data = await fetch(process.env.API + '/api/auth/signup', { body: form })
         const jwts: { refresh: string; access: string } = await data.json()
         localStorage.setItem(USER_ACCESS_TOKEN, jwts.access)
         localStorage.setItem(USER_REFRESH_TOKEN, jwts.refresh)
@@ -57,11 +57,11 @@ export default function SignIn() {
     return (
         <VStack alignItems="center">
             <div style={divStyle}>
-                <Image src={loginImg} alt={''} style={imageStyles} />
+                <Image src={refisetImg} alt={''} style={imageStyles} />
                 <VStack alignItems="center">
                     <div style={formInput}>
                         <HStack alignItems="center" justifyContent="center">
-                            <form action={login}>
+                            <form action={register}>
                                 <VStack alignItems="center">
                                     <Image src={Logo} alt={''} style={LogoStyle} />
                                     <SpanUI type="medium">система оптимизации логистики</SpanUI>

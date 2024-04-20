@@ -2,7 +2,9 @@ import type { Config } from "tailwindcss";
 
 const config: Config = {
   content: [
-    "./src/**/*"
+    "./src/**/*",
+    "./src/**/*.{js,jsx,ts,tsx}",
+    "./node_modules/react-tailwindcss-datepicker/dist/index.esm.js",
   ],
   theme: {
     extend: {
@@ -13,11 +15,11 @@ const config: Config = {
       },
     },
     colors: {
-      "x-orange": '#F37022',
+      "x-orange": '#e5522e',
       "x-black": '#080407',
       "x-white": '#EAE8E4',
       "x-purple": "#5F308C",
-      'x-light-orange': '#EB9B6C',
+      'x-light-orange': '#e37f63',
       "x-gray": "#F4F4F4"
     }
   },

@@ -76,8 +76,8 @@ const Dashboard = () => {
     }, [])
 
     return (
-        <Page className="w-11/12">
-            <VStack alignItems="center">
+        <Page className="w-full">
+            <VStack alignItems="center" className='p-8'>
                 <HStack justifyContent="between">
                     <CardUI bgColor="light">
                         <div className="grid grid-cols-3 gap-8">

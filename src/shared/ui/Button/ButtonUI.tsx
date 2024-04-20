@@ -1,63 +1,69 @@
-import React from 'react';
+import { cn } from '@/shared/utils/cn'
+import React, { ButtonHTMLAttributes, CSSProperties, ReactNode } from 'react'
 
-interface ButtonProps {
-  type: 'default' | 'active' | 'hover';
-  text: string;
-  width: string;
-  height: string;
-  textStyle: 'regular' | 'medium' | 'semibold' | 'bold' | 'extaBold';
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+    active_type?: 'default' | 'active' | 'hover'
+    children: ReactNode
+    width?: string
+    height?: string
+    textStyle?: 'regular' | 'medium' | 'semibold' | 'bold' | 'extaBold'
 }
 
-const ButtonUI: React.FC<ButtonProps> = ({ type, text, width, height, textStyle }) => {
-  
-    const buttonStyles: { [key in ButtonProps['type']]: React.CSSProperties } = {
+export const ButtonUI: React.FC<ButtonProps> = ({
+    active_type = 'default',
+    children,
+    width,
+    height,
+    textStyle = 'regular',
+    className,
+    ...otherProps
+}) => {
+    const buttonStyles: Record<'default' | 'active' | 'hover', CSSProperties> = {
         default: {
-            backgroundColor: 'gray',
+            backgroundColor: '#F37022',
             color: 'white',
-            borderRadius: '5px'
+            borderRadius: '5px',
         },
         active: {
             backgroundColor: '#d0f5cd',
             color: 'black',
-            borderRadius: '5px'
+            borderRadius: '5px',
         },
         hover: {
-            backgroundColor: 'blue',
+            backgroundColor: '#EB9B6C',
             color: 'white',
-            borderRadius: '5px'
+            borderRadius: '5px',
         },
-    };
+    }
 
-    const defaultTextStyle: { [key in ButtonProps['textStyle']]: React.CSSProperties } = {
+    const defaultTextStyle: Record<'regular' | 'medium' | 'semibold' | 'bold' | 'extaBold', CSSProperties> = {
         regular: {
-            fontSize: '10px'
+            fontSize: '10px',
         },
         medium: {
-            fontSize: '18px'
+            fontSize: '18px',
         },
         semibold: {
-            fontSize: '36px'
+            fontSize: '36px',
         },
         bold: {
-            fontSize: '44px'
+            fontSize: '44px',
         },
         extaBold: {
-            fontSize: '54px'
-        }
-    };
+            fontSize: '54px',
+        },
+    }
 
-    const handleClick = () => {
-       console.log('Button clicked');
-    };
-    
-    const mergedTextStyle = defaultTextStyle[textStyle];
-    const buttonStyle = { ...buttonStyles[type], width, height};
+    const mergedTextStyle = defaultTextStyle[textStyle]
+    const buttonStyle = { ...buttonStyles[active_type], width, height }
 
     return (
-        <button style={{...buttonStyle, ...mergedTextStyle}} onClick={handleClick}>
-            {text}
+        <button
+            className={cn(`pt-2 pb-2 pr-6 pl-6`, {}, [className])}
+            style={{ ...buttonStyle, ...mergedTextStyle }}
+            {...otherProps}
+        >
+            {children}
         </button>
-    );
-};
-
-export default ButtonUI;
+    )
+}

@@ -1,9 +1,1 @@
-export type {
-    MountedReducer,
-    ReducerManager,
-    ReduxStoreWithManager,
-    StateSchema,
-    StateSchemaKey,
-    ThunkConfig,
-} from './config/StateSchema'
-export type { AppDispatch } from './config/store'
+export type { AppDispatch, RootState } from './config/store'

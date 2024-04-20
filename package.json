@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@2gis/mapgl": "^1.47.0",
+    "@2gis/mapgl-directions": "^2.0.3",
     "@googlemaps/js-api-loader": "^1.16.6",
     "@react-google-maps/api": "^2.19.3",
     "@reduxjs/toolkit": "^2.2.3",

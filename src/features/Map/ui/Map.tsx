@@ -1,20 +1,27 @@
-import { useEffect, useRef } from 'react'
+import { FC, useEffect, useRef } from 'react'
 import { Loader } from '@googlemaps/js-api-loader'
 
-export const Map = () => {
+interface MapProps {
+    places: { ltd: number; lnt: number }[]
+}
+
+export const Map: FC<MapProps> = ({ places }) => {
     const mapRef = useRef<HTMLDivElement | null>(null)
 
     useEffect(() => {
         const initMap = async () => {
             const loader = new Loader({
                 apiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_KEY || '',
-                version: 'weekly',
+                version: 'quarterly',
             })
 
             const { Map } = await loader.importLibrary('maps')
+            const { AdvancedMarkerElement, PinElement } = (await google.maps.importLibrary(
+                'marker'
+            )) as google.maps.MarkerLibrary
             const position = {
                 lat: 43.4762482,
-                lng: -79.38737203,
+                lng: 8,
             }
 
             const mapOptions: google.maps.MapOptions = {
@@ -22,12 +29,10 @@ export const Map = () => {
                 zoom: 17,
                 mapId: 'MAP_ID',
             }
-
-            const map = new Map(mapRef.current as HTMLDivElement, mapOptions)
         }
 
         initMap()
     }, [])
 
-    return <div style={{ height: '100%' }} ref={mapRef} />
+    return <div id="MAP_ID" style={{ height: '100%' }} ref={mapRef} />
 }

@@ -1,12 +1,12 @@
 import React, { CSSProperties } from 'react'
 
 interface ContainerProps {
-    typeContainer: 'extraSmall' | 'small' | 'medium' | 'large'
+    typeContainer: 'extraSmall' | 'small' | 'medium' | 'large' |'xlarge'
     children: React.ReactNode
 }
 
 export const ContainerUI: React.FC<ContainerProps> = ({ typeContainer, children }) => {
-    const typeContainerStyles: Record<'extraSmall' | 'small' | 'medium' | 'large', CSSProperties> = {
+    const typeContainerStyles: Record<'extraSmall' | 'small' | 'medium' | 'large' | 'xlarge', CSSProperties> = {
         extraSmall: {
             borderColor: '2px solid gray',
             width: 'auto',
@@ -35,6 +35,13 @@ export const ContainerUI: React.FC<ContainerProps> = ({ typeContainer, children 
             backgroundColor: '#EAEAEA',
             margin: '20px',
         },
+        xlarge: {
+            borderColor: '2px solid gray',
+            width: '1570px',
+            height: '800px',
+            backgroundColor: '#EAEAEA',
+            margin: '20px'
+        }
     }
 
     const containerStyle = {

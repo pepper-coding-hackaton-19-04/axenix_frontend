@@ -17,7 +17,8 @@ const config: Config = {
       "x-black": '#080407',
       "x-white": '#EAE8E4',
       "x-purple": "#5F308C",
-      'x-light-orange': '#EB9B6C'
+      'x-light-orange': '#EB9B6C',
+      "x-gray": "#F4F4F4"
     }
   },
   plugins: [],

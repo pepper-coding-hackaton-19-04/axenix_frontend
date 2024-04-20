@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { InputHTMLAttributes } from 'react'
 
-interface InputProps {
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     width: string
     height: string
     backgroundColor: string
@@ -9,7 +9,15 @@ interface InputProps {
     text: string
 }
 
-export const InputUI: React.FC<InputProps> = ({ width, height, backgroundColor, textStyle, type, text }) => {
+export const InputUI: React.FC<InputProps> = ({
+    width,
+    height,
+    backgroundColor,
+    textStyle,
+    type,
+    text,
+    ...otherProps
+}) => {
     const defaultTextStyle: { [key in InputProps['textStyle']]: React.CSSProperties } = {
         regular: {
             fontSize: '10px',
@@ -55,11 +63,7 @@ export const InputUI: React.FC<InputProps> = ({ width, height, backgroundColor, 
         borderRadius: '6px',
     }
 
-    return (
-        <div>
-            <input style={inputStyle} />
-        </div>
-    )
+    return <input style={inputStyle} {...otherProps} />
 }
 
 export default InputUI

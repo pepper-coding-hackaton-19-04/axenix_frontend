@@ -3,8 +3,8 @@ declare module '*.module.css' {
     export default classes
 }
 
-declare const __IS_DEV__: boolean
-declare const __API__: string
+const __IS_DEV__: boolean
+const __API__: string
 
 type DeepPartial<T> = T extends object
     ? {

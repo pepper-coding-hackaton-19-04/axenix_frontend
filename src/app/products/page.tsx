@@ -91,7 +91,11 @@ const ProductsPage = () => {
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     >
                         {FILTERS.map((filter) => {
-                            return <option value={`${filter.value}`}>{filter.title}</option>
+                            return (
+                                <option key={filter.title} value={`${filter.value}`}>
+                                    {filter.title}
+                                </option>
+                            )
                         })}
                     </select>
                 </form>
@@ -105,7 +109,11 @@ const ProductsPage = () => {
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     >
                         {FILTERS.map((filter) => {
-                            return <option value={`${filter.value}`}>{filter.title}</option>
+                            return (
+                                <option key={filter.title} value={`${filter.value}`}>
+                                    {filter.title}
+                                </option>
+                            )
                         })}
                     </select>
                 </form>
@@ -119,7 +127,11 @@ const ProductsPage = () => {
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     >
                         {FILTERS.map((filter) => {
-                            return <option value={`${filter.value}`}>{filter.title}</option>
+                            return (
+                                <option key={filter.title} value={`${filter.value}`}>
+                                    {filter.title}
+                                </option>
+                            )
                         })}
                     </select>
                 </form>
@@ -128,7 +140,7 @@ const ProductsPage = () => {
                 {/*    кто это читает и считает пидорасом - согласен. мне стало лень выносить это в другой компонент. Но если ты крутышка и такая ⭐ то сделай это пожалуйста я уже устал ;) */}
                 {CARDS.map((card, key) => {
                     return (
-                        <Link href={`/products/${card.link}`} className="group">
+                        <Link key={card.link} href={`/products/${card.link}`} className="group">
                             <div className="w-full p-4 rounded-md border group-hover:border-2" key={key}>
                                 <p className="text-xl font-semibold">{card.title}</p>
                                 <p>{card.desc}</p>

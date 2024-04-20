@@ -17,8 +17,8 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={monserrat.className + ' grid grid-cols-[1fr_5fr]'}>
-                <Sidebar />
+            <body className={monserrat.className }>
+                {/*<Sidebar />*/}
                 {children}
             </body>
         </html>

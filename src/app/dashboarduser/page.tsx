@@ -2,10 +2,8 @@
 import { useEffect, useRef } from 'react';
 import { Chart, registerables } from 'chart.js';
 import ContainerUI from '@/shared/ui/Container/ContainerUI';
-import InputUI from '@/shared/ui/Input/InputUI';
 import { HStack, VStack } from '@/shared/ui';
 import {SpanUI} from '@/shared/ui/Span/SpanUI';
-//СУТЬ ДАШБОРДА: есть только у админа и владельца, можно изменять кол-во товара
 
 
 Chart.register(...registerables);

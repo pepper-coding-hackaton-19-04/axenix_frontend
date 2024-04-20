@@ -17,7 +17,7 @@ const ButtonUI: React.FC<ButtonProps> = ({ type, text, width, height, textStyle 
             borderRadius: '5px'
         },
         active: {
-            backgroundColor: '#B0F2AA',
+            backgroundColor: '#d0f5cd',
             color: 'black',
             borderRadius: '5px'
         },
@@ -51,7 +51,7 @@ const ButtonUI: React.FC<ButtonProps> = ({ type, text, width, height, textStyle 
     };
     
     const mergedTextStyle = defaultTextStyle[textStyle];
-    const buttonStyle = {margin: '5px', ...buttonStyles[type], width, height};
+    const buttonStyle = { ...buttonStyles[type], width, height};
 
     return (
         <button style={{...buttonStyle, ...mergedTextStyle}} onClick={handleClick}>

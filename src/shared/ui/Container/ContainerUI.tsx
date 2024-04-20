@@ -1,17 +1,24 @@
 import React from 'react';
 
 interface ContainerProps {
-  typeContainer: 'small' | 'medium' | 'large';
+  typeContainer: 'extraSmall' | 'small' | 'medium' | 'large';
   children: React.ReactNode;
 }
 
 const ContainerUI: React.FC<ContainerProps> = ({ typeContainer, children }) => {
   const typeContainerStyles: { [key in ContainerProps['typeContainer']]: React.CSSProperties } = {
+    extraSmall: {
+      borderColor: '2px solid gray',
+      width: 'auto',
+      height: 'auto',
+      backgroundColor: '#E0E0E0',
+      margin: '10px'
+    },
     small: {
       borderColor: '2px solid gray',
-      width: '200px',
+      width: '300px',
       height: 'auto',
-      backgroundColor: '#F2F2F2',
+      backgroundColor: '#E0E0E0',
       margin: '10px'
     },
     medium: {

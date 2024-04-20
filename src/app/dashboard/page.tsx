@@ -88,18 +88,29 @@ const Dashboard = () => {
     <>
     <VStack alignItems='center'>
       <ContainerUI typeContainer="large">
-        
-      <VStack alignItems='center'>
+        <HStack justifyContent='between'>
+
+
+        <ContainerUI typeContainer='small'>
+      <VStack alignItems='start'> 
+      <SpanUI type="medium" color="#333">Navigation</SpanUI>
+      <SpanUI type="medium" color="#333">-Route1</SpanUI>
+      <SpanUI type="medium" color="#333">-Route2</SpanUI>
+      <SpanUI type="medium" color="#333">-Route3</SpanUI>
+      <SpanUI type="medium" color="#333">-Route4</SpanUI>
+      </VStack>
+
+      </ContainerUI>
+
+
+        <VStack alignItems='center'>
       <SpanUI type="large" color="#333" >Dashboard</SpanUI>
       <ContainerUI typeContainer='medium'>
       <VStack alignItems='center'>
       <div style={{ width: '300px', height: '300px' }}>
         <canvas ref={pieChartRef} width="300px" height="300px"></canvas>
       </div>
-        <HStack alignItems='center'>
-          <InputUI width='100px' height='30px' backgroundColor='#B0F2AA'  textStyle='medium' type='default' text='lala'/>
-          <ButtonUI type={'active'} text={'Отправить'} width={'120px'} height={'30px'} textStyle={'medium'} />
-        </HStack>
+
         </VStack>
     </ContainerUI>
     
@@ -113,8 +124,35 @@ const Dashboard = () => {
     
     </ContainerUI>
     </VStack>
+
+
+    <ContainerUI typeContainer='small'>
+
+      <VStack alignItems='center'> 
+      <SpanUI type="medium" color="#333">Редактирование</SpanUI>
+      </VStack>
+      <HStack justifyContent='between'>
+      <ContainerUI typeContainer='extraSmall'>
+        <VStack justifyContent='start'>
+          <SpanUI type="small" color="#333">Товар</SpanUI>
+          <SpanUI type="small" color="#333">Количество</SpanUI>
+        </VStack>
       </ContainerUI>
-   
+
+      <ContainerUI typeContainer='extraSmall'>
+        <VStack justifyContent='start'>
+        <InputUI width='130px' height='30px' backgroundColor='#EAEAEA'  textStyle='medium' type='default' text='lala'/>
+        <InputUI width='130px' height='30px' backgroundColor='#EAEAEA'  textStyle='medium' type='default' text='lala'/>
+        </VStack>
+      </ContainerUI>
+      </HStack>
+      <VStack alignItems='center'> 
+        <ButtonUI type={'active'} text={'Изменить'} width={'130px'} height={'35px'} textStyle={'medium'} />
+      </VStack>
+
+      </ContainerUI>
+        </HStack>
+      </ContainerUI>
     </VStack>
       
     

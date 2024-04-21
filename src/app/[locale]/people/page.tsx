@@ -1,7 +1,6 @@
 'use client'
 import React from 'react'
 import { useState, useEffect } from 'react'
-import { User } from '@/entities/User/model/types/UserSchema'
 import { loginin } from '@/shared/lib/server/loginin'
 import { USER_ACCESS_TOKEN, USER_REFRESH_TOKEN } from '@/shared/consts/localStorage'
 import { addPeople } from '@/shared/lib/server/addPeople'

@@ -1,7 +1,6 @@
+'use client'
 import Image from 'next/image'
 import React, {CSSProperties, useState} from 'react'
-import * as loginImg from '../../../public/assets/signin.jpg'
-import * as Logo from '../../../public/assets/ae2287a983927b38618a2c560d9d7c36.png'
 import { ButtonUI, HStack, InputUI, SpanUI, VStack } from '@/shared/ui'
 import { USER_ACCESS_TOKEN, USER_REFRESH_TOKEN } from '@/shared/consts/localStorage'
 import {register} from "@/shared/lib/server/signup";
@@ -64,6 +63,7 @@ export default function SignIn() {
         e.preventDefault();
         await loginin(JSON.stringify({ login: login, password: pass }))
             .then((data)=>{
+                //@ts-ignore
                 const agreedData = JSON.parse(data)
                 console.log(agreedData);
                 if(agreedData.access && agreedData.refresh){

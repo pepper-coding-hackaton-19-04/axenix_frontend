@@ -51,7 +51,7 @@ const ProductsPage = () => {
 
     return (
         <div className="p-6">
-            <h1 className="text-4xl font-semibold">Zапасы</h1>
+            <h1 className="text-4xl font-semibold">Запасы</h1>
             <div className="relative my-3 border rounded-md flex w-60 lg:w-96">
                 <span className="absolute inset-y-0 left-0 flex items-center py-4 gap-2">
                     <button type="submit" className="p-2 focus:outline-none focus:ring">

@@ -3,122 +3,113 @@ import { Directions } from '@2gis/mapgl-directions'
 import { load } from '@2gis/mapgl'
 import { Map, Marker } from '@2gis/mapgl/types'
 import type { NextPage } from 'next'
-import { memo, useEffect, useRef } from 'react'
+import { memo, useEffect, useRef, useState } from 'react'
+import { startAntAlg } from '@/shared/utils/algorithms/AntAlg/AntAlg'
 
 const data = [
-    { longitude: 47.15389021, latitude: 39.73343477, label: 'Клиент 1', text: 'Клиент 1', id: '1' },
-    { longitude: 47.27843879, latitude: 39.66504917, label: 'Клиент 1', text: 'Клиент 1', id: '2' },
-    { longitude: 47.27908131, latitude: 39.8532115, label: 'Клиент 1', text: 'Клиент 1', id: '3' },
+    { longitude: 47.15389021, latitude: 39.73343477, label: 'Склад 1', text: 'Склад 1', id: '1' },
+    { longitude: 47.27843879, latitude: 39.66504917, label: 'Склад 2', text: 'Склад 2', id: '2' },
+    { longitude: 47.27908131, latitude: 39.8532115, label: 'Склад 3', text: 'Склад 3', id: '3' },
     { longitude: 47.23956633, latitude: 39.686936, label: 'Клиент 1', text: 'Клиент 1', id: ' 4' },
-    { longitude: 47.23876258, latitude: 39.72910032, label: 'Склад 1', text: 'Клиент 1', id: '5' },
-    { longitude: 47.26100013, latitude: 39.7189723, label: 'Склад 1', text: 'Клиент 1', id: '6 ' },
-    { longitude: 47.21593813, latitude: 39.67961893, label: 'Склад 1', text: 'Клиент 1', id: '7' },
-    { longitude: 47.2294162, latitude: 39.6284853, label: 'Склад 1', text: 'Клиент 1', id: '8' },
-    { longitude: 47.23343191, latitude: 39.75903914, label: 'Склад 1', text: 'Клиент 1', id: '9 ' },
-    { longitude: 47.25423635, latitude: 39.76570175, label: 'Склад 1', text: 'Клиент 1', id: '10' },
-    { longitude: 47.23600049, latitude: 39.59843919, label: 'Склад 1', text: 'Клиент 1', id: '11' },
-    { longitude: 47.29597385, latitude: 39.71406386, label: 'Склад 1', text: 'Клиент 1', id: '12' },
-    { longitude: 47.29408339, latitude: 39.70305607, label: 'Склад 1', text: 'Клиент 1', id: '13' },
-    { longitude: 47.26360024, latitude: 39.85908554, label: 'Склад 1', text: 'Клиент 1', id: '14' },
-    { longitude: 47.22374472, latitude: 39.72594068, label: 'Склад 1', text: 'Клиент 1', id: '15' },
-    { longitude: 47.28950657, latitude: 39.71387074, label: 'Склад 1', text: 'Клиент 1', id: '16' },
-    { longitude: 47.28401677, latitude: 39.7063391, label: 'Склад 1', text: 'Клиент 1', id: '17' },
-    { longitude: 47.28298007, latitude: 39.71715376, label: 'Склад 1', text: 'Клиент 1', id: '18' },
-    { longitude: 47.26878544, latitude: 39.88010333, label: 'Склад 1', text: 'Клиент 1', id: '19' },
-    { longitude: 47.23348307, latitude: 39.71436963, label: 'Склад 1', text: 'Клиент 1', id: '20' },
-    { longitude: 47.22882423, latitude: 39.69366298, label: 'Склад 1', text: 'Клиент 1', id: '21' },
-    { longitude: 47.23015798, latitude: 39.68220458, label: 'Склад 1', text: 'Клиент 1', id: '22' },
-    { longitude: 47.27205698, latitude: 39.75013421, label: 'Склад 1', text: 'Клиент 1', id: '23' },
+    { longitude: 47.23876258, latitude: 39.72910032, label: 'Клиент 2', text: 'Клиент 2', id: '5' },
+    { longitude: 47.26100013, latitude: 39.7189723, label: 'Клиент 3', text: 'Клиент 3', id: '6 ' },
+    { longitude: 47.21593813, latitude: 39.67961893, label: 'Клиент 4', text: 'Клиент 4', id: '7' },
+    { longitude: 47.2294162, latitude: 39.6284853, label: 'Клиент 5', text: 'Клиент 5', id: '8' },
+    { longitude: 47.23343191, latitude: 39.75903914, label: 'Клиент 6', text: 'Клиент 6', id: '9 ' },
+    { longitude: 47.25423635, latitude: 39.76570175, label: 'Клиент 7', text: 'Клиент 7', id: '10' },
+    { longitude: 47.23600049, latitude: 39.59843919, label: 'Клиент 8', text: 'Клиент 8', id: '11' },
+    { longitude: 47.29597385, latitude: 39.71406386, label: 'Клиент 9', text: 'Клиент 9', id: '12' },
+    { longitude: 47.29408339, latitude: 39.70305607, label: 'Клиент 10', text: 'Клиент 10', id: '13' },
+    { longitude: 47.26360024, latitude: 39.85908554, label: 'Клиент 11', text: 'Клиент 11', id: '14' },
+    { longitude: 47.22374472, latitude: 39.72594068, label: 'Клиент 12', text: 'Клиент 12', id: '15' },
+    { longitude: 47.28950657, latitude: 39.71387074, label: 'Клиент 13', text: 'Клиент 13', id: '16' },
+    { longitude: 47.28401677, latitude: 39.7063391, label: 'Клиент 14', text: 'Клиент 14', id: '17' },
+    { longitude: 47.28298007, latitude: 39.71715376, label: 'Клиент 15', text: 'Клиент 15', id: '18' },
+    { longitude: 47.26878544, latitude: 39.88010333, label: 'Клиент 16', text: 'Клиент 16', id: '19' },
+    { longitude: 47.23348307, latitude: 39.71436963, label: 'Клиент 17', text: 'Клиент 17', id: '20' },
+    { longitude: 47.22882423, latitude: 39.69366298, label: 'Клиент 18', text: 'Клиент 18', id: '21' },
+    { longitude: 47.23015798, latitude: 39.68220458, label: 'Клиент 19', text: 'Клиент 19', id: '22' },
+    { longitude: 47.27205698, latitude: 39.75013421, label: 'Клиент 20', text: 'Клиент 20', id: '23' },
 ]
 
 // eslint-disable-next-line react/display-name
 const MapWrapper = memo(
-    () => {
-        return <div id="map-container" className="h-full w-full"></div>
-    },
+    () => <div id="map-container" className="h-full w-full" />,
     () => true
 )
 
-const Home: NextPage = () => {
-    const resetButton = useRef<null | HTMLButtonElement>(null)
+export default memo(
+    function Home() {
+        const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set())
+        const routeButton = useRef<null | HTMLButtonElement>(null)
 
-    useEffect(() => {
-        let map: Map
-        load().then((mapglAPI) => {
-            map = new mapglAPI.Map('map-container', {
-                center: [39.810833, 47.240556],
-                zoom: 13,
-                key: process.env.NEXT_PUBLIC_2GIS_MAPS_KEY,
-            })
+        useEffect(() => {
+            let map: Map
+            load().then((mapglAPI) => {
+                map = new mapglAPI.Map('map-container', {
+                    center: [39.810833, 47.240556],
+                    zoom: 13,
+                    key: '5741e43a-a264-4902-bd0b-945dcf1f4b14',
+                })
 
-            const directions = new Directions(map, {
-                directionsApiKey: '5741e43a-a264-4902-bd0b-945dcf1f4b14',
-            })
+                const directions = new Directions(map, {
+                    directionsApiKey: '5741e43a-a264-4902-bd0b-945dcf1f4b14',
+                })
 
-            const markers: Marker[] = []
+                const markers: { marker: Marker; id: string }[] = []
 
-            let firstPoint: undefined | number[]
-            let secondPoint: undefined | number[]
-            // A current selecting point
-            let selecting = 'a'
-
-            const controlsHtml = `<button id="reset">Reset points</button> `
-            new mapglAPI.Control(map, controlsHtml, {
-                position: 'topLeft',
-            })
-
-            resetButton.current?.addEventListener('click', function () {
-                selecting = 'a'
-                firstPoint = undefined
-                secondPoint = undefined
-                directions.clear()
-            })
-
-            map.on('click', (e) => {
-                const coords = e.lngLat
-
-                if (selecting != 'end') {
-                    // Just to visualize selected points, before the route is done
-                    markers.push(
-                        new mapglAPI.Marker(map, {
-                            coordinates: coords,
-                            icon: 'https://docs.2gis.com/img/dotMarker.svg',
-                        })
+                routeButton.current?.onclick(() => {
+                    const antalg = startAntAlg(
+                        Array.from(selectedIds).map((id) => {
+                            const candidate = data.find((dataId) => dataId.id === id)
+                            return [candidate?.latitude || 0, candidate?.longitude || 0]
+                        }),
+                        (path) => directions.carRoute({ points: path })
                     )
-                }
 
-                if (selecting === 'a') {
-                    firstPoint = coords
-                    selecting = 'b'
-                } else if (selecting === 'b') {
-                    secondPoint = coords
-                    selecting = 'end'
-                }
+                    antalg()
+                })
 
-                // If all points are selected — we can draw the route
-                if (firstPoint && secondPoint) {
-                    directions.carRoute({
-                        points: [firstPoint, secondPoint],
+                data.map(({ latitude, longitude, id }) =>
+                    markers.push({ marker: new mapglAPI.Marker(map, { coordinates: [latitude, longitude] }), id })
+                )
+
+                markers.forEach(({ marker, id }) => {
+                    marker.on('click', () => {
+                        const candidate = selectedIds.has(id)
+                        console.log(candidate, selectedIds, id)
+                        if (candidate) {
+                            console.log('candidate')
+                            marker.setLabel({ text: '' })
+                            setSelectedIds((prev) => {
+                                prev.delete(id)
+                                return prev
+                            })
+                        }
+                        if (!candidate) {
+                            console.log('!candidate')
+                            marker.setLabel({ text: `Выбран ${data.find(({ id: dataId }) => id == dataId)?.label}` })
+                            setSelectedIds((prev) => {
+                                prev.add(id)
+                                return prev
+                            })
+                        }
                     })
-                    markers.forEach((m) => {
-                        m.destroy()
-                    })
-                }
+                })
             })
 
-            data.map(({ latitude, longitude }) => new mapglAPI.Marker(map, { coordinates: [latitude, longitude] }))
-        })
+            // Удаляем карту при размонтировании компонента
+            return () => map && map.destroy()
+        }, [])
 
-        // Удаляем карту при размонтировании компонента
-        return () => map && map.destroy()
-    }, [])
-
-    return (
-        <div>
-            <button ref={resetButton}>Reset</button>
-            <MapWrapper />
-        </div>
-    )
-}
-
-export default Home
+        return (
+            <div className="grid grid-cols-2">
+                <div>
+                    <button ref={routeButton}>Построить маршрут между точками</button>
+                </div>
+                <MapWrapper />
+            </div>
+        )
+    },
+    () => true
+)

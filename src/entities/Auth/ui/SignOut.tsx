@@ -1,17 +1,21 @@
+'use client'
+import { USER_ACCESS_TOKEN, USER_REFRESH_TOKEN } from '@/shared/consts/localStorage'
 import { signOut } from '@/shared/lib/auth'
 import { ButtonUI, SpanUI } from '@/shared/ui'
+import { useRouter } from 'next/navigation'
 
-export function SignOut() {
+export function SignButton() {
+    const nav = useRouter()
+    const login = () => nav.push('/login')
+    const signout = async () => {
+        localStorage.removeItem(USER_ACCESS_TOKEN)
+        localStorage.removeItem(USER_REFRESH_TOKEN)
+        await fetch(process.env.API + '/auth/signout')
+    }
+
     return (
-        <form
-            action={async () => {
-                'use server'
-                await signOut()
-            }}
-            className='flex p-1 hover:bg-[rgb(0,0,0,.1)] transition-all rounded-md'
-        >
-            {/*<ButtonUI className="flex items-center p-2 space-x-3 rounded-md" type="submit" textStyle="medium">*/}
-            <button className='flex items-center gap-1'>
+        <div className="flex p-1 hover:bg-[rgb(0,0,0,.1)] transition-all rounded-md">
+            <button className="flex items-center gap-1">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="w-6 h-6 text-gray-100"
@@ -29,6 +33,6 @@ export function SignOut() {
                 <SpanUI className="text-x-white">Выйти</SpanUI>
             </button>
             {/*</ButtonUI>*/}
-        </form>
+        </div>
     )
 }

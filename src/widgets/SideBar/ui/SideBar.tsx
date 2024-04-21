@@ -1,9 +1,7 @@
-import { ReactNode, useState } from 'react'
+import { ReactNode } from 'react'
 import Link from 'next/link'
 import { Logo } from './Logo'
-import { auth } from '@/shared/lib/auth'
-import { SignOut } from '@/entities/Auth/ui/SignOut'
-import { SignIn } from '@/entities/Auth/ui/SignIn'
+import { SignButton } from '@/entities/Auth/ui/SignOut'
 import { SpanUI } from '@/shared/ui'
 
 const sideBarConfig: { Icon: ReactNode; text: string; href: string }[] = [
@@ -130,7 +128,7 @@ const sideBarConfig: { Icon: ReactNode; text: string; href: string }[] = [
 
 export async function Sidebar() {
     // const [open, setOpen] = useState(false)
-    const sessionData = await auth()
+
     return (
         <div className="h-full w-full">
             <div className={` flex flex-col h-full p-3 min-h-screen bg-[#e5522e] shadow duration-300`}>
@@ -151,7 +149,9 @@ export async function Sidebar() {
                                     </Link>
                                 </li>
                             ))}
-                            <li className="rounded-sm">{sessionData ? <SignOut /> : <SignIn />}</li>
+                            <li className="rounded-sm">
+                                <SignButton />
+                            </li>
                         </ul>
                     </div>
                 </div>

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     description: 'The best CRM ON ZAWARUDO',
 }
 
-export default async function RootLayout({
+export default async function ProtectedLayout({
     children,
 }: Readonly<{
     children: React.ReactNode

@@ -1,4 +1,3 @@
-import { User, UserRoles } from '@/entities/User/model/types/User'
 import { auth } from '@/shared/lib/auth'
 import { CardUI, Page } from '@/shared/ui'
 import React from 'react'

@@ -9,7 +9,7 @@ interface CardUIProps extends Omit<HTMLAttributes<HTMLDivElement>, 'className'> 
 }
 
 const bgStyle: Record<'primary' | 'secondary' | 'neutral' | 'light' | 'xneutral', string> = {
-    primary: 'bg-x-orange',
+    primary: 'bg-x-light-orange',
     secondary: 'bg-x-purple',
     neutral: 'bg-gray-50',
     light: 'bg-x-white',

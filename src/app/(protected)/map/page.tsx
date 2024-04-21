@@ -2,9 +2,10 @@
 import { Directions } from '@2gis/mapgl-directions'
 import { load } from '@2gis/mapgl'
 import { Map, Marker } from '@2gis/mapgl/types'
-import type { NextPage } from 'next'
 import { memo, useEffect, useRef, useState } from 'react'
 import { startAntAlg } from '@/shared/utils/algorithms/AntAlg/AntAlg'
+import { PDFButton } from '@/features/PDFButton/ui/PDFButton'
+import { ButtonUI, SpanUI, VStack } from '@/shared/ui'
 
 const data = [
     { longitude: 47.15389021, latitude: 39.73343477, label: 'Склад 1', text: 'Склад 1', id: '1' },
@@ -41,7 +42,24 @@ const MapWrapper = memo(
 export default memo(
     function Home() {
         const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set())
-        const routeButton = useRef<null | HTMLButtonElement>(null)
+        const directionsRef = useRef<Directions | null>(null)
+        const [canPrint, setCanPrint] = useState<boolean>(false)
+
+        const routeDirections = () => {
+            console.log('ant')
+            const antalg = startAntAlg(
+                Array.from(selectedIds).map((id) => {
+                    const candidate = data.find((dataId) => dataId.id === id)
+                    return [candidate?.latitude || 0, candidate?.longitude || 0]
+                }),
+                (path) => directionsRef.current?.carRoute({ points: path })
+            )
+            console.log('ant')
+            antalg()
+            console.log('ant')
+            setCanPrint(true)
+            console.log('ant')
+        }
 
         useEffect(() => {
             let map: Map
@@ -55,20 +73,9 @@ export default memo(
                 const directions = new Directions(map, {
                     directionsApiKey: process.env.NEXT_PUBLIC_2GIS_MAPS_KEY || '',
                 })
+                directionsRef.current = directions
 
                 const markers: { marker: Marker; id: string }[] = []
-
-                // routeButton.current?.onclick(() => {
-                //     const antalg = startAntAlg(
-                //         Array.from(selectedIds).map((id) => {
-                //             const candidate = data.find((dataId) => dataId.id === id)
-                //             return [candidate?.latitude || 0, candidate?.longitude || 0]
-                //         }),
-                //         (path) => directions.carRoute({ points: path })
-                //     )
-
-                //     antalg()
-                // })
 
                 data.map(({ latitude, longitude, id }) =>
                     markers.push({ marker: new mapglAPI.Marker(map, { coordinates: [latitude, longitude] }), id })
@@ -103,12 +110,39 @@ export default memo(
         }, [])
 
         return (
-            <div className="grid grid-cols-2">
-                <div>
-                    <button ref={routeButton}>Построить маршрут между точками</button>
-                </div>
+            <main className="grid grid-cols-2">
+                <VStack alignItems="center" gap={5} className="mt-5">
+                    <ButtonUI onClick={routeDirections} textStyle="medium">
+                        Построить маршрут между точками
+                    </ButtonUI>
+                    {canPrint && (
+                        <PDFButton
+                            places={Array.from(selectedIds).map((id) => data.find((dataId) => dataId.id === id)!)}
+                        />
+                    )}
+                    <div className="grid grid-cols-1 gap-2">
+                        <div className="grid grid-cols-5 gap-2 justify-center">
+                            <SpanUI className="text-center">Номер в маршруте</SpanUI>
+                            <SpanUI className="text-center">ID в системе</SpanUI>
+                            <SpanUI className="text-center">Широта</SpanUI>
+                            <SpanUI className="text-center">Долгота</SpanUI>
+                            <SpanUI className="text-center">Адрес</SpanUI>
+                        </div>
+                        {Array.from(selectedIds)
+                            .map((id) => data.find((dataId) => dataId.id === id)!)
+                            .map((place, i) => (
+                                <div className="grid grid-cols-5 gap-2" key={place.id}>
+                                    <SpanUI className="text-center">{i + 1}</SpanUI>
+                                    <SpanUI className="text-center">{place.id}</SpanUI>
+                                    <SpanUI className="text-center">{place.latitude}</SpanUI>
+                                    <SpanUI className="text-center">{place.longitude}</SpanUI>
+                                    <SpanUI className="text-center">{place.text}</SpanUI>
+                                </div>
+                            ))}
+                    </div>
+                </VStack>
                 <MapWrapper />
-            </div>
+            </main>
         )
     },
     () => true

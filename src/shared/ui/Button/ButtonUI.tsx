@@ -1,11 +1,12 @@
 import { cn } from '@/shared/utils/cn'
-import React, { ButtonHTMLAttributes, CSSProperties, ReactNode } from 'react'
+import React, { ButtonHTMLAttributes, CSSProperties, MutableRefObject, ReactNode } from 'react'
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     active_type?: 'default' | 'active' | 'hover'
     children: ReactNode
     width?: string
     height?: string
+    ref?: MutableRefObject<HTMLButtonElement | null>
     textStyle?: 'regular' | 'medium' | 'semibold' | 'bold' | 'extaBold'
 }
 
@@ -16,6 +17,7 @@ export const ButtonUI: React.FC<ButtonProps> = ({
     height,
     textStyle = 'regular',
     className,
+    ref,
     ...otherProps
 }) => {
     const buttonStyles: Record<'default' | 'active' | 'hover', CSSProperties> = {
@@ -59,6 +61,7 @@ export const ButtonUI: React.FC<ButtonProps> = ({
 
     return (
         <button
+            ref={ref}
             className={cn(`pt-2 pb-2 pr-6 pl-6`, {}, [className])}
             style={{ ...buttonStyle, ...mergedTextStyle }}
             {...otherProps}

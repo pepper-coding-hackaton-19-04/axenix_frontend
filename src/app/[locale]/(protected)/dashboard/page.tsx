@@ -2,10 +2,12 @@
 import { useEffect, useRef } from 'react'
 import { Chart, registerables } from 'chart.js'
 import { ButtonUI, CardUI, ContainerUI, HStack, InputUI, Page, SpanUI, VStack } from '@/shared/ui'
+import { useTranslations } from 'next-intl'
 
 Chart.register(...registerables)
 
 const Dashboard = () => {
+    const t = useTranslations('dashboard')
     const pieChartRef = useRef<HTMLCanvasElement>(null)
     const barChartRef = useRef<HTMLCanvasElement>(null)
 
@@ -77,7 +79,7 @@ const Dashboard = () => {
 
     return (
         <Page className="w-full">
-            <VStack alignItems="center" className='p-8'>
+            <VStack alignItems="center" className="p-8">
                 <HStack justifyContent="between">
                     <CardUI bgColor="light">
                         <div className="grid grid-cols-3 gap-8">
@@ -85,59 +87,75 @@ const Dashboard = () => {
                                 <CardUI className="w-full p-8 h-full" bgColor="neutral">
                                     <VStack justifyContent="between">
                                         <SpanUI type="large" color="#333">
-                                            Настройка
+                                            {t('Настройка')}
                                         </SpanUI>
                                         <SpanUI type="large" color="#333">
-                                            фильтрации
+                                            {t('фильтрации')}
                                         </SpanUI>
-                                            <VStack justifyContent='between'>
-
-                                                    <SpanUI type="medium" color="#333">
-                                                    Товар
-                                                    </SpanUI>
-                                                    <InputUI width={'265px'} height={'30px'} backgroundColor={'#ffd8ae'} textStyle={'bold'} type={'active'} text={''} ></InputUI>
-
-                                            </VStack>
-                                            <VStack justifyContent='between'>
-
+                                        <VStack justifyContent="between">
                                             <SpanUI type="medium" color="#333">
-                                            Количество
+                                                {t('Товар')}
                                             </SpanUI>
-                                            <InputUI width={'265px'} height={'30px'} backgroundColor={'#ffd8ae'} textStyle={'bold'} type={'active'} text={''} ></InputUI>
-
-                                            </VStack>
-                                        <ButtonUI textStyle='medium'>Применить</ButtonUI>
-
-
+                                            <InputUI
+                                                width={'265px'}
+                                                height={'30px'}
+                                                backgroundColor={'#ffd8ae'}
+                                                textStyle={'bold'}
+                                                type={'active'}
+                                                text={''}
+                                            ></InputUI>
+                                        </VStack>
+                                        <VStack justifyContent="between">
+                                            <SpanUI type="medium" color="#333">
+                                                {t('Количество')}
+                                            </SpanUI>
+                                            <InputUI
+                                                width={'265px'}
+                                                height={'30px'}
+                                                backgroundColor={'#ffd8ae'}
+                                                textStyle={'bold'}
+                                                type={'active'}
+                                                text={''}
+                                            ></InputUI>
+                                        </VStack>
+                                        <ButtonUI textStyle="medium">{t('Применить')}</ButtonUI>
                                     </VStack>
                                 </CardUI>
                                 <CardUI className="w-full p-8 h-full" bgColor="light">
                                     <VStack justifyContent="between">
                                         <SpanUI type="large" color="#333">
-                                            Редактирование
+                                            {t('Редактирование')}
                                         </SpanUI>
                                         <SpanUI type="large" color="#333">
-                                            товаров
+                                            {t('товаров')}
                                         </SpanUI>
-                                            <VStack justifyContent='between'>
-
-                                                    <SpanUI type="medium" color="#333">
-                                                    Товар
-                                                    </SpanUI>
-                                                    <InputUI width={'265px'} height={'30px'} backgroundColor={'#ffd8ae'} textStyle={'bold'} type={'active'} text={''} ></InputUI>
-
-                                            </VStack>
-                                            <VStack justifyContent='between'>
-
+                                        <VStack justifyContent="between">
                                             <SpanUI type="medium" color="#333">
-                                            Количество
+                                                {t('Товар')}
                                             </SpanUI>
-                                            <InputUI width={'265px'} height={'30px'} backgroundColor={'#ffd8ae'} textStyle={'bold'} type={'active'} text={''} ></InputUI>
-
-                                            </VStack>
-                                        <ButtonUI textStyle='medium'>Применить</ButtonUI>
-
-
+                                            <InputUI
+                                                width={'265px'}
+                                                height={'30px'}
+                                                backgroundColor={'#ffd8ae'}
+                                                textStyle={'bold'}
+                                                type={'active'}
+                                                text={''}
+                                            ></InputUI>
+                                        </VStack>
+                                        <VStack justifyContent="between">
+                                            <SpanUI type="medium" color="#333">
+                                                {t('Количество')}
+                                            </SpanUI>
+                                            <InputUI
+                                                width={'265px'}
+                                                height={'30px'}
+                                                backgroundColor={'#ffd8ae'}
+                                                textStyle={'bold'}
+                                                type={'active'}
+                                                text={''}
+                                            ></InputUI>
+                                        </VStack>
+                                        <ButtonUI textStyle="medium">{t('Применить')}</ButtonUI>
                                     </VStack>
                                 </CardUI>
                                 {/* <CardUI className="w-full p-8 h-full" bgColor="neutral">

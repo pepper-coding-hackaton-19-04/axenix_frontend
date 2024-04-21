@@ -1,11 +1,13 @@
 'use client'
 import React from 'react'
 import { useRouter } from 'next/router'
+import { useTranslations } from 'next-intl'
 
 // DELETE IGNORE AND ADD TYPE I FORGOT HOW 2 MAKE IT XDDDDDDDD DDSADJFASBHGFASHBG
 // @ts-ignore
 const ProductById = ({ params }) => {
     const { id } = params
+    const t = useTranslations('product')
 
     const DATA = [
         {
@@ -23,7 +25,9 @@ const ProductById = ({ params }) => {
     ]
     return (
         <div className="p-6">
-            <h1 className="text-4xl font-semibold">Товар id: {id}</h1>
+            <h1 className="text-4xl font-semibold">
+                {t('Товар')} id: {id}
+            </h1>
             <div className="my-5 flex gap-3 items-start justify-center">
                 <div className="w-1/2 flex flex-col gap-3">
                     {DATA.map((data, key) => {
@@ -37,10 +41,10 @@ const ProductById = ({ params }) => {
                 </div>
                 <div className="w-1/2 flex flex-col items-start gap-8">
                     <div className="p-3 rounded-md border h-60 w-full">
-                        <p>Уведомления</p>
+                        <p>{t('Уведомления')}</p>
                     </div>
                     <div className="p-3 rounded-md border h-60 w-full">
-                        <p>Stats</p>
+                        <p>{t('Статистика')}</p>
                     </div>
                 </div>
             </div>

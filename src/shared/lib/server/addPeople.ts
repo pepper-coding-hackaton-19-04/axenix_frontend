@@ -5,7 +5,7 @@ import { USER_ACCESS_TOKEN, USER_REFRESH_TOKEN } from "@/shared/consts/localStor
 export async function addPeople(data) { // Accept login and password as arguments
     console.log(data)
     try {
-        const response = await fetch('https://ilshaw.site/api/consumer/create/', {
+        const response = await fetch(process.env.API + '/api/consumer/create/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

@@ -3,6 +3,8 @@ import { Logo } from './Logo'
 import { SignButton } from '@/entities/Auth/ui/SignOut'
 import { SpanUI } from '@/shared/ui'
 import { Link } from '@/navigation'
+import { LanguageSwitcher } from '@/features/LanguageSwitcher/LanguageSwitcher'
+import { useTranslations } from 'next-intl'
 
 const sideBarConfig: { Icon: ReactNode; text: string; href: string }[] = [
     {
@@ -142,7 +144,8 @@ const sideBarConfig: { Icon: ReactNode; text: string; href: string }[] = [
     },
 ]
 
-export async function Sidebar() {
+export function Sidebar() {
+    const t = useTranslations('sidebar')
     // const [open, setOpen] = useState(false)
 
     return (
@@ -161,13 +164,14 @@ export async function Sidebar() {
                                         className="flex items-center gap-1 p-1 rounded-md hover:bg-[rgb(0,0,0,.1)] transition-all"
                                     >
                                         {item.Icon}
-                                        <SpanUI className="text-x-white">{item.text}</SpanUI>
+                                        <SpanUI className="text-x-white">{t(item.text)}</SpanUI>
                                     </Link>
                                 </li>
                             ))}
                             <li className="rounded-sm">
                                 <SignButton />
                             </li>
+                            <LanguageSwitcher />
                         </ul>
                     </div>
                 </div>

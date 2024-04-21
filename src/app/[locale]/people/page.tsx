@@ -120,7 +120,7 @@ const UserProfilePage = () => {
         },
     ]
     const [name, setName] = useState('')
-
+//@ts-ignore
     const handleSubmit = async (e) => {
         e.preventDefault()
         await addPeople(JSON.stringify({ name: name })).then((data) => {

@@ -1,20 +1,23 @@
 import { CardUI, ContainerUI, HStack, Page, SpanUI, VStack } from '@/shared/ui'
+import { useTranslations } from 'next-intl'
 
-export default async function Home() {
+export default function Home() {
+    const t = useTranslations('main')
+
     return (
         <main className="">
             <Page className="w-full h-full">
                 <HStack alignItems="center" className="p-8">
                     <VStack alignItems="center" className="p-8">
                         <SpanUI type="xlarge" color="darkorange">
-                            Конроль всех аспектов бизнеса в одном приложении
+                            {t('Конроль всех аспектов бизнеса в одном приложении')}
                         </SpanUI>
                         <VStack alignItems="center" className="p-8">
                             <HStack justifyContent="between">
                                 <CardUI bgColor="light">
                                     <div style={{ paddingBottom: '15px', paddingTop: '15px' }}>
                                         <ContainerUI typeContainer="small">
-                                            <SpanUI type="large">Построить маршрут</SpanUI>
+                                            <SpanUI type="large">{t('Построить маршрут')}</SpanUI>
                                         </ContainerUI>
                                     </div>
                                 </CardUI>
@@ -22,7 +25,7 @@ export default async function Home() {
                                 <CardUI bgColor="light">
                                     <div style={{ paddingBottom: '15px', paddingTop: '15px' }}>
                                         <ContainerUI typeContainer="small">
-                                            <SpanUI type="large">Маршрут в PDF</SpanUI>
+                                            <SpanUI type="large">{t('Маршрут в PDF')}</SpanUI>
                                         </ContainerUI>
                                     </div>
                                 </CardUI>
@@ -34,7 +37,7 @@ export default async function Home() {
                                 <CardUI bgColor="light">
                                     <div style={{ paddingBottom: '15px', paddingTop: '15px' }}>
                                         <ContainerUI typeContainer="small">
-                                            <SpanUI type="large">Импорт EXCEL файлов</SpanUI>
+                                            <SpanUI type="large">{t('Импорт EXCEL файлов')}</SpanUI>
                                         </ContainerUI>
                                     </div>
                                 </CardUI>
@@ -42,7 +45,7 @@ export default async function Home() {
                                 <CardUI bgColor="light">
                                     <div style={{ paddingBottom: '15px', paddingTop: '15px' }}>
                                         <ContainerUI typeContainer="small">
-                                            <SpanUI type="large">Экпорт EXCEL файлов</SpanUI>
+                                            <SpanUI type="large">{t('Экпорт EXCEL файлов')}</SpanUI>
                                         </ContainerUI>
                                     </div>
                                 </CardUI>
@@ -54,7 +57,7 @@ export default async function Home() {
                                 <CardUI bgColor="light">
                                     <div style={{ paddingBottom: '15px', paddingTop: '15px' }}>
                                         <ContainerUI typeContainer="small">
-                                            <SpanUI type="large">Учет сотрудников</SpanUI>
+                                            <SpanUI type="large">{t('Учет сотрудников')}</SpanUI>
                                         </ContainerUI>
                                     </div>
                                 </CardUI>
@@ -62,7 +65,7 @@ export default async function Home() {
                                 <CardUI bgColor="light">
                                     <div style={{ paddingBottom: '15px', paddingTop: '15px' }}>
                                         <ContainerUI typeContainer="small">
-                                            <SpanUI type="large">Изменение данных</SpanUI>
+                                            <SpanUI type="large">{t('Изменение данных')}</SpanUI>
                                         </ContainerUI>
                                     </div>
                                 </CardUI>
@@ -73,7 +76,7 @@ export default async function Home() {
                                 <CardUI bgColor="light">
                                     <div style={{ paddingBottom: '15px', paddingTop: '15px' }}>
                                         <ContainerUI typeContainer="small">
-                                            <SpanUI type="large">Учет товара</SpanUI>
+                                            <SpanUI type="large">{t('Учет товара')}</SpanUI>
                                         </ContainerUI>
                                     </div>
                                 </CardUI>
@@ -81,7 +84,7 @@ export default async function Home() {
                                 <CardUI bgColor="light">
                                     <div style={{ paddingBottom: '15px', paddingTop: '15px' }}>
                                         <ContainerUI typeContainer="small">
-                                            <SpanUI type="large">Изменение товара</SpanUI>
+                                            <SpanUI type="large">{t('Изменение товара')}</SpanUI>
                                         </ContainerUI>
                                     </div>
                                 </CardUI>

@@ -1,8 +1,11 @@
 'use client'
 import { Link } from '@/navigation'
 import React, { useState } from 'react'
+import { useTranslations } from 'use-intl'
 
 const ProductsPage = () => {
+    const t = useTranslations('product')
+
     const [search, setSearch] = useState('')
     const [searchFilter1, setSearchFilter1] = useState('')
     const [searchFilter2, setSearchFilter2] = useState('')
@@ -51,7 +54,7 @@ const ProductsPage = () => {
 
     return (
         <div className="p-6">
-            <h1 className="text-4xl font-semibold">Запасы</h1>
+            <h1 className="text-4xl font-semibold">{t('Запасы')}</h1>
             <div className="relative my-3 border rounded-md flex w-60 lg:w-96">
                 <span className="absolute inset-y-0 left-0 flex items-center py-4 gap-2">
                     <button type="submit" className="p-2 focus:outline-none focus:ring">
@@ -145,7 +148,7 @@ const ProductsPage = () => {
                                 <p className="text-xl font-semibold">{card.title}</p>
                                 <p>{card.desc}</p>
                                 <div className="flex gap-3">
-                                    <p>Статистика:</p>
+                                    <p>{t('Статистика')}:</p>
                                     {card.stats.map((stat, key) => {
                                         return <p key={key}>{stat}</p>
                                     })}

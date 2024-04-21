@@ -6,6 +6,7 @@ import { memo, useEffect, useRef, useState } from 'react'
 import { startAntAlg } from '@/shared/utils/algorithms/AntAlg/AntAlg'
 import { PDFButton } from '@/features/PDFButton/ui/PDFButton'
 import { ButtonUI, SpanUI, VStack } from '@/shared/ui'
+import { useTranslations } from 'next-intl'
 
 const data = [
     { longitude: 47.15389021, latitude: 39.73343477, label: 'Склад 1', text: 'Склад 1', id: '1' },
@@ -44,6 +45,7 @@ export default memo(
         const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set())
         const directionsRef = useRef<Directions | null>(null)
         const [canPrint, setCanPrint] = useState<boolean>(false)
+        const t = useTranslations('map')
 
         const routeDirections = () => {
             console.log('ant')
@@ -113,7 +115,7 @@ export default memo(
             <main className="grid grid-cols-2">
                 <VStack alignItems="center" gap={5} className="mt-5">
                     <ButtonUI onClick={routeDirections} textStyle="medium">
-                        Построить маршрут между точками
+                        {t('Построить маршрут между точками')}
                     </ButtonUI>
                     {canPrint && (
                         <PDFButton
@@ -122,11 +124,11 @@ export default memo(
                     )}
                     <div className="grid grid-cols-1 gap-2">
                         <div className="grid grid-cols-5 gap-2 justify-center">
-                            <SpanUI className="text-center">Номер в маршруте</SpanUI>
-                            <SpanUI className="text-center">ID в системе</SpanUI>
-                            <SpanUI className="text-center">Широта</SpanUI>
-                            <SpanUI className="text-center">Долгота</SpanUI>
-                            <SpanUI className="text-center">Адрес</SpanUI>
+                            <SpanUI className="text-center">{t('Номер в маршруте')}</SpanUI>
+                            <SpanUI className="text-center">{t('ID в системе')}</SpanUI>
+                            <SpanUI className="text-center">{t('Широта')}</SpanUI>
+                            <SpanUI className="text-center">{t('Долгота')}</SpanUI>
+                            <SpanUI className="text-center">{t('Адрес')}</SpanUI>
                         </div>
                         {Array.from(selectedIds)
                             .map((id) => data.find((dataId) => dataId.id === id)!)

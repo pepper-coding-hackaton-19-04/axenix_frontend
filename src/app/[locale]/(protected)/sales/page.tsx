@@ -1,8 +1,10 @@
 'use client'
+import { useTranslations } from 'next-intl'
 import React, { useState } from 'react'
 import Datepicker from 'react-tailwindcss-datepicker'
 
 const Sales = () => {
+    const t = useTranslations('sales')
     const [value, setValue] = useState({
         startDate: new Date(),
         endDate: new Date().setMonth(11),
@@ -37,11 +39,11 @@ const Sales = () => {
 
     return (
         <div className="p-6">
-            <h1 className="text-4xl font-semibold">Продажи</h1>
+            <h1 className="text-4xl font-semibold">{t('Продажи')}</h1>
             <div className="flex flex-1">
                 <div className="my-5 w-1/3">
                     <div className="w-full lg:w-72">
-                        <p>Выбор даты</p>
+                        <p>{t('Выбор даты')}</p>
                         <Datepicker
                             //@ts-ignore
                             value={value}
@@ -54,7 +56,7 @@ const Sales = () => {
                                 htmlFor="countries"
                                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                             >
-                                Фильтры-селектор
+                                {t('Фильтры-селектор')}
                             </label>
                             <select
                                 value={searchFilter}
@@ -74,7 +76,7 @@ const Sales = () => {
                 </div>
                 <div className="w-2/3">
                     {/*    INPUT METRICS HERE*/}
-                    INPUT METRICS HERE
+                    {/* INPUT METRICS HERE */}
                 </div>
             </div>
         </div>

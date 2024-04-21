@@ -1,6 +1,6 @@
 'use client'
+import { Link } from '@/navigation'
 import React, { useState } from 'react'
-import Link from 'next/link'
 
 const ProductsPage = () => {
     const [search, setSearch] = useState('')

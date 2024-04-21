@@ -2,10 +2,10 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import { User } from '@/entities/User/model/types/UserSchema'
-import Link from 'next/link'
 import { loginin } from '@/shared/lib/server/loginin'
 import { USER_ACCESS_TOKEN, USER_REFRESH_TOKEN } from '@/shared/consts/localStorage'
 import { addPeople } from '@/shared/lib/server/addPeople'
+import { Link } from '@/navigation'
 
 const UserProfilePage = () => {
     // const [userData, setUserData] = useState<User | null>(null);

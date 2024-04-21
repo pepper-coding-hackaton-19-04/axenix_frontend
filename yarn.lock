@@ -2183,14 +2183,14 @@ next-auth@5.0.0-beta.4:
   dependencies:
     "@auth/core" "0.18.4"
 
-next-intl@^3.11.3:
-  version "3.11.3"
-  resolved "https://registry.yarnpkg.com/next-intl/-/next-intl-3.11.3.tgz#0f91c053a26731e28eab687c3ea439ee006b90ee"
-  integrity sha512-l961i+Jf0PJA+EEhlP+K8LiUyu36c6j8esmlOxaJ0A5z+YTto0RmA3XTQ1dTibl1Fkkopt2fnp6r4BZplRxvTg==
+next-intl@3.9.5:
+  version "3.9.5"
+  resolved "https://registry.yarnpkg.com/next-intl/-/next-intl-3.9.5.tgz#4d95833cfad86ee36b5a03c3c10c697b42b35592"
+  integrity sha512-tsp4N433WgTAbbyZdMlcsLGHFM88wv2a7ZpF/od8X9+qAlO1TrajZrNrGBpIg6nA9EGZyMbQPzZD7XZrqYIv7g==
   dependencies:
     "@formatjs/intl-localematcher" "^0.2.32"
     negotiator "^0.6.3"
-    use-intl "^3.11.3"
+    use-intl "^3.9.5"
 
 next@14.2.2:
   version "14.2.2"
@@ -3082,7 +3082,7 @@ uri-js@^4.2.2:
   dependencies:
     punycode "^2.1.0"
 
-use-intl@^3.11.3:
+use-intl@^3.9.5:
   version "3.11.3"
   resolved "https://registry.yarnpkg.com/use-intl/-/use-intl-3.11.3.tgz#ce37ff0079ce365833acad7c33a4944ce1d5d50b"
   integrity sha512-qxW2CiDWQY6ilR7AxrQPp5qiU6hWWh7Ek8uBEKGjcO7KoRuJ/4/ybIi/Z7rTXnEHHvQyCT1dotyDT9WIBGwCWg==

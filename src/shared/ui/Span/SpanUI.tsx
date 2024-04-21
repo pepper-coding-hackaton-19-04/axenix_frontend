@@ -1,13 +1,13 @@
 import React, { CSSProperties, HTMLAttributes } from 'react'
 
 interface SpanProps extends HTMLAttributes<HTMLParagraphElement> {
-    type?: 'small' | 'medium' | 'large'
+    type?: 'small' | 'medium' | 'large' | 'xlarge'
     color?: string
     children: React.ReactNode
 }
 
 export const SpanUI: React.FC<SpanProps> = ({ type = 'medium', color, children, ...otherProps }) => {
-    const typeStyles: Record<'small' | 'medium' | 'large', CSSProperties> = {
+    const typeStyles: Record<'small' | 'medium' | 'large' | 'xlarge', CSSProperties> = {
         small: {
             fontSize: '12px',
             fontWeight: 'normal',
@@ -25,6 +25,10 @@ export const SpanUI: React.FC<SpanProps> = ({ type = 'medium', color, children, 
             fontWeight: 'bold',
             color: color,
             // margin: '15px',
+        },
+        xlarge: {
+            fontSize: '34px',
+            fontWeight: '600px',
         },
     }
 

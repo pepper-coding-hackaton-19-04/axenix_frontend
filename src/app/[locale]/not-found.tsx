@@ -1,6 +1,5 @@
+import { Link } from '@/navigation'
 import { ButtonUI, CardUI, Page, SpanUI, VStack } from '@/shared/ui'
-import Link from 'next/link'
-import { redirect } from 'next/navigation'
 
 const NotFound = () => {
     return (

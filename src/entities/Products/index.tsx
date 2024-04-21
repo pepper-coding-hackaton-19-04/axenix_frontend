@@ -1,4 +1,4 @@
-export { ProductReducer, useProductActions } from './model/slice/ProductSlice'
+
 export { ProductItem } from './ui/Product'
 export { ProductList } from './ui/ProductList'
 export type { ProductSchema } from './model/types/ProductSchema'

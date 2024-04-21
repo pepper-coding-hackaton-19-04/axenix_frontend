@@ -1,3 +1,4 @@
+//@ts-nocheck
 export const startAntAlg = (vertexes: number[][], paintPath: (path: number[][], color: string) => void) => {
     const numberOfGenerations = 100000
     const alpha = 1

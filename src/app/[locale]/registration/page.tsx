@@ -12,6 +12,7 @@ export default function SignIn() {
         e.preventDefault();
         await register(JSON.stringify({ login: login, password: pass }))
             .then((data)=>{
+                //@ts-ignore
                 const agreedData = JSON.parse(data)
                 console.log(agreedData);
                 if(agreedData.access && agreedData.refresh){

@@ -49,26 +49,26 @@ export default memo(
                 map = new mapglAPI.Map('map-container', {
                     center: [39.810833, 47.240556],
                     zoom: 13,
-                    key: '5741e43a-a264-4902-bd0b-945dcf1f4b14',
+                    key: process.env.NEXT_PUBLIC_2GIS_MAPS_KEY,
                 })
 
                 const directions = new Directions(map, {
-                    directionsApiKey: '5741e43a-a264-4902-bd0b-945dcf1f4b14',
+                    directionsApiKey: process.env.NEXT_PUBLIC_2GIS_MAPS_KEY || '',
                 })
 
                 const markers: { marker: Marker; id: string }[] = []
 
-                routeButton.current?.onclick(() => {
-                    const antalg = startAntAlg(
-                        Array.from(selectedIds).map((id) => {
-                            const candidate = data.find((dataId) => dataId.id === id)
-                            return [candidate?.latitude || 0, candidate?.longitude || 0]
-                        }),
-                        (path) => directions.carRoute({ points: path })
-                    )
+                // routeButton.current?.onclick(() => {
+                //     const antalg = startAntAlg(
+                //         Array.from(selectedIds).map((id) => {
+                //             const candidate = data.find((dataId) => dataId.id === id)
+                //             return [candidate?.latitude || 0, candidate?.longitude || 0]
+                //         }),
+                //         (path) => directions.carRoute({ points: path })
+                //     )
 
-                    antalg()
-                })
+                //     antalg()
+                // })
 
                 data.map(({ latitude, longitude, id }) =>
                     markers.push({ marker: new mapglAPI.Marker(map, { coordinates: [latitude, longitude] }), id })
